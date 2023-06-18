@@ -39,10 +39,24 @@ jobs:
         pip install lxml
       
      # 내가 만든(가져올) 파이썬 파일 실행 
-    - name : library install    
+    - name : run my file   
       run: |
         python3 news.py
+     
+     # 커밋(실제 파일 저장)
+     - name : commits
+       run: |
+        git config --global user.email "ehdals5744@naver.com"
+        git config --global user.name "dongmin"
+        git add data.csv # 우분투(가상환경)가 아닌 실제 데이터를 저장하기 위해
+        git commit -m "뉴스데이터 수집" # 데이터 수집 했다는 메세지 전달예정
         
+     # 푸쉬 (실제서버 저장)
+     - name : push
+       uses : ad-m/github-push-action@master
+       with :
+        branch : "main"
+        github_token : $
         
     - name: Test with pytest
       run: |
