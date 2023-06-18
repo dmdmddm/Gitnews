@@ -15,7 +15,6 @@ on:
 # 실제 실행시의 작업내용
 jobs:
   build:
-    
     runs-on: ubuntu-latest # 서버활용 : 우분투(가상환경)
     
     # step 별로 작업 진행될 예
